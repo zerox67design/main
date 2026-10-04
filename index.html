@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Battle Royale — Prototype</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b0d10;color:#f4f4f4;font:14px Arial,sans-serif}button{cursor:pointer;border:1px solid #30343a;background:#15181d;color:#fff;padding:10px 14px;border-radius:8px}button:hover{background:#20242a}.app{min-height:100vh;display:grid;grid-template-columns:220px 1fr}.side{background:#101216;border-right:1px solid #252930;padding:22px}.logo{font-size:22px;font-weight:800;margin-bottom:30px}.nav button{display:block;width:100%;text-align:left;margin:7px 0}.nav button.active{background:#fff;color:#000}.main{padding:24px;max-width:1300px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.tokens{background:#15181d;border:1px solid #30343a;padding:10px 14px;border-radius:9px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#12151a;border:1px solid #292d34;border-radius:14px;padding:18px}.card h3{margin-top:0}.hero{grid-column:span 2;min-height:260px;background:linear-gradient(135deg,#171b21,#0d0f12);display:flex;flex-direction:column;justify-content:center}.hero h1{font-size:42px;margin:0 0 8px}.muted{color:#9da3ac}.row{display:flex;gap:10px;flex-wrap:wrap}.item{border:1px solid #292d34;padding:12px;border-radius:10px;flex:1;min-width:130px}.bar{height:8px;background:#292d34;border-radius:10px;overflow:hidden}.fill{height:100%;background:#fff;width:65%}.screen{display:none}.screen.active{display:block}.mission{display:flex;justify-content:space-between;border-bottom:1px solid #292d34;padding:14px 0}.map{min-height:320px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;background:#0c0f13;padding:12px}.zone{min-height:70px;border:1px solid #333842;border-radius:8px;padding:8px}.gun{display:flex;justify-content:space-between;border:1px solid #292d34;padding:13px;border-radius:9px;margin:8px 0}.shop{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media(max-width:800px){.app{grid-template-columns:1fr}.side{border-right:0;border-bottom:1px solid #252930}.grid,.shop{grid-template-columns:1fr}.hero{grid-column:span 1}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side"><div class="logo">BATTLE//ZONE</div><div class="nav">
+<button class="active" onclick="show('lobby',this)">Lobby</button><button onclick="show('characters',this)">Characters</button><button onclick="show('missions',this)">Missions</button><button onclick="show('maps',this)">Maps</button><button onclick="show('guns',this)">Guns</button><button onclick="show('wall',this)">Wall</button><button onclick="show('vending',this)">Vending Machine</button>
+</div></aside>
+<main class="main"><div class="top"><div><b id="title">Lobby</b><div class="muted">Battle Royale prototype</div></div><div class="tokens">🪙 Tokens: <b id="token">500</b></div></div>
+
+<section id="lobby" class="screen active"><div class="grid">
+<div class="card hero"><div class="muted">SEASON 01</div><h1>LAST PLAYER STANDING</h1><p class="muted">Drop in, loot, build walls, complete missions and survive.</p><div class="row"><button onclick="startMatch()">PLAY BATTLE ROYALE</button><button onclick="show('maps',null)">SELECT MAP</button></div></div>
+<div class="card"><h3>Player</h3><p>Rookie • Level 12</p><div class="bar"><div class="fill"></div></div><p class="muted">XP 650 / 1000</p></div>
+<div class="card"><h3>Loadout</h3><div class="item">Assault Rifle<br><b>Equipped</b></div><div class="item">Gloo Wall ×3</div></div>
+<div class="card"><h3>Quick Mission</h3><p>Eliminate 3 opponents</p><b>2 / 3</b></div>
+<div class="card"><h3>Vending Machine</h3><p class="muted">Spend tokens for supplies.</p><button onclick="show('vending',null)">OPEN SHOP</button></div>
+</div></section>
+
+<section id="characters" class="screen"><div class="card"><h2>Characters</h2><div class="shop"><div class="item"><h3>Ranger</h3><p>Balanced fighter</p><button>Equip</button></div><div class="item"><h3>Scout</h3><p>Fast movement</p><button>Equip</button></div><div class="item"><h3>Guardian</h3><p>Extra armor</p><button>Equip</button></div></div></div></section>
+
+<section id="missions" class="screen"><div class="card"><h2>Daily Missions</h2><div class="mission"><span>Survive 10 minutes</span><b>+100 🪙</b></div><div class="mission"><span>Loot 5 supply crates</span><b>+75 🪙</b></div><div class="mission"><span>Eliminate 3 opponents</span><b>+150 🪙</b></div></div></section>
+
+<section id="maps" class="screen"><div class="card"><h2>Maps</h2><p class="muted">Choose a drop zone.</p><div class="map"><div class="zone"><b>Downtown</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Factory</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Forest</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Harbor</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Hill Camp</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Market</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Power Plant</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Airfield</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Village</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Bridge</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Ruins</b><br><small class="muted">Loot zone</small></div><div class="zone"><b>Warehouse</b><br><small class="muted">Loot zone</small></div></div></div></section>
+
+<section id="guns" class="screen"><div class="card"><h2>Guns</h2><div class="gun"><span>Assault Rifle <small class="muted">Balanced</small></span><b>Damage 82</b></div><div class="gun"><span>SMG <small class="muted">Fast fire</small></span><b>Damage 58</b></div><div class="gun"><span>Shotgun <small class="muted">Close range</small></span><b>Damage 95</b></div><div class="gun"><span>Sniper <small class="muted">Long range</small></span><b>Damage 100</b></div></div></section>
+
+<section id="wall" class="screen"><div class="card"><h2>Wall</h2><p>Gloo Wall inventory: <b id="walls">3</b></p><p class="muted">Deploy a temporary cover wall during a match.</p><button onclick="deployWall()">Deploy Wall</button></div></section>
+
+<section id="vending" class="screen"><div class="card"><h2>Vending Machine</h2><p class="muted">Use tokens to buy match supplies.</p><div class="shop"><div class="item"><h3>Med Kit</h3><p>Restore health.</p><button onclick="buy(50,'Med Kit')">50 🪙</button></div><div class="item"><h3>Gloo Wall ×2</h3><p>Extra cover.</p><button onclick="buy(80,'Gloo Walls')">80 🪙</button></div><div class="item"><h3>Armor</h3><p>+25 armor.</p><button onclick="buy(100,'Armor')">100 🪙</button></div></div></div></section>
+</main></div>
+<script>
+let tokens=500,walls=3;
+function show(id,btn){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('title').textContent=id[0].toUpperCase()+id.slice(1);if(btn){document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}}
+function buy(cost,name){if(tokens<cost)return alert('Not enough tokens');tokens-=cost;document.getElementById('token').textContent=tokens;if(name==='Gloo Walls')walls+=2;document.getElementById('walls').textContent=walls;alert(name+' purchased!')}
+function deployWall(){if(!walls)return alert('No walls left');walls--;document.getElementById('walls').textContent=walls;alert('Gloo Wall deployed!')}
+function startMatch(){alert('Match lobby created. Next step: connect this UI to your game engine/network server.')}
+</script>
+</body></html>
